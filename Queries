@@ -1,0 +1,12 @@
+CREATE TABLE Interest_Rates(
+    Year YEAR PRIMARY KEY,
+    Month INT,
+    Day INT,
+    Target_Rate varchar(50),
+    Upper_Target varchar(50),
+    Lower_Target varchar(50),
+    Funds_Rate varchar(50),
+    Real_GDP varchar(50),
+    Unemployment_Rate varchar(50),
+    Inflation_Rate varchar(50)
+    );
