@@ -14,15 +14,47 @@ CREATE TABLE Interest_Rates(
 DELETE FROM interest_rates WHERE Year = 0000 and Month = 0 and Day = 0
 
 select COUNT(DISTINCT Year)
-	FROM interest_rates
+    FROM interest_rates
     WHERE Real_GDP > 3 
 
 select DISTINCT Year
-	FROM interest_rates
+    FROM interest_rates
     WHERE Real_GDP > 3
     ORDER BY Year ASC
     
 select DISTINCT Year
-	FROM interest_rates
+    FROM interest_rates
     WHERE Real_GDP < 2 or Unemployment_Rate > 5 or Inflation_Rate > 3
     ORDER BY Year ASC    
+
+select Year, Real_GDP, Unemployment_Rate, Inflation_Rate
+    FROM interest_rates
+    WHERE Real_GDP < 2 or Unemployment_Rate > 5 or Inflation_Rate > 3
+    GROUP BY Year WITH ROLLUP
+    
+SELECT Real_GDP AS 'Real GDP',
+    CASE WHEN Real_GDP > 4 THEN 'High'
+    WHEN Real_GDP BETWEEN 2 AND 3 THEN 'Medium'
+    ELSE 'Low'
+    END AS 'GDP_Level'
+    FROM interest_rates
+
+SELECT Inflation_Rate AS 'Inflation Rate',
+    CASE WHEN Inflation_Rate > 4 THEN 'High'
+    WHEN Inflation_Rate BETWEEN 2 AND 3 THEN 'Medium'
+    ELSE 'Low'
+    END AS 'Inflation_Level'
+    FROM interest_rates
+    
+SELECT Year, Month, Day, COALESCE(Real_GDP) 
+    FROM interest_rates
+
+SELECT * 
+    FROM interest_rates
+    WHERE Target_Rate AND Upper_Target AND Lower_Target AND Real_GDP AND Inflation_Rate IS NOT NULL
+
+SELECT Year, MAX(Real_GDP) AS 'Maximum GDP', MAX(Unemployment_Rate) AS 'Maximum Unemployment Rate', MAX(Inflation_Rate) AS 'Maximum Inflation Rate'
+    FROM interest_rates
+
+SELECT AVG(Real_GDP) AS 'Average GDP', AVG(Unemployment_Rate) AS 'Average Unemployment Rate', AVG(Inflation_Rate) AS 'Average Inflation Rate'
+    FROM interest_rates
