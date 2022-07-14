@@ -10,3 +10,19 @@ CREATE TABLE Interest_Rates(
     Unemployment_Rate varchar(50),
     Inflation_Rate varchar(50)
     );
+
+DELETE FROM interest_rates WHERE Year = 0000 and Month = 0 and Day = 0
+
+select COUNT(DISTINCT Year)
+	FROM interest_rates
+    WHERE Real_GDP > 3 
+
+select DISTINCT Year
+	FROM interest_rates
+    WHERE Real_GDP > 3
+    ORDER BY Year ASC
+    
+select DISTINCT Year
+	FROM interest_rates
+    WHERE Real_GDP < 2 or Unemployment_Rate > 5 or Inflation_Rate > 3
+    ORDER BY Year ASC    
