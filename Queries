@@ -58,3 +58,26 @@ SELECT Year, MAX(Real_GDP) AS 'Maximum GDP', MAX(Unemployment_Rate) AS 'Maximum 
 
 SELECT AVG(Real_GDP) AS 'Average GDP', AVG(Unemployment_Rate) AS 'Average Unemployment Rate', AVG(Inflation_Rate) AS 'Average Inflation Rate'
     FROM interest_rates
+
+SELECT real_gdp, unemployment_rate, inflation_rate
+	FROM interest_rates
+    WHERE unemployment_rate > 5 and real_gdp < 2
+    ORDER BY unemployment_rate DESC
+
+SELECT target_rate, upper_target, lower_target
+	FROM interest_rates
+    WHERE target_rate AND upper_target AND lower_target != 0;
+       
+ SELECT year, month, real_gdp
+	FROM interest_rates
+    WHERE real_gdp BETWEEN 1 AND 3
+    
+ SELECT year, month, inflation_rate
+	FROM interest_rates
+    WHERE inflation_rate >= 2
+    
+ SELECT year, month, unemployment_rate
+	FROM interest_rates
+    WHERE unemployment_rate >= 2   
+    
+ 
