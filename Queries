@@ -80,4 +80,25 @@ SELECT target_rate, upper_target, lower_target
 	FROM interest_rates
     WHERE unemployment_rate >= 2   
     
- 
+ SELECT year, month, real_gdp
+	FROM interest_rates
+    WHERE real_gdp <= 0
+    ORDER BY real_gdp ASC
+
+SELECT COUNT(DISTINCT real_gdp)
+	FROM interest_rates;
+
+SELECT DISTINCT year, month, real_gdp, COUNT(DISTINCT real_gdp) AS 'Distinct GDP'
+	FROM interest_rates
+    WHERE real_gdp >=0
+    GROUP BY real_gdp
+
+SELECT DISTINCT year, month, unemployment_rate, COUNT(DISTINCT unemployment_rate) AS 'Distinct Unemployment Rate'
+	FROM interest_rates
+    WHERE unemployment_rate >=0
+    GROUP BY unemployment_rate
+
+SELECT DISTINCT year, month, inflation_rate, COUNT(DISTINCT inflation_rate) AS 'Distinct Inflation Rate'
+	FROM interest_rates
+    WHERE inflation_rate >=0
+    GROUP BY inflation_rate
