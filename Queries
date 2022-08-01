@@ -102,3 +102,9 @@ SELECT DISTINCT year, month, inflation_rate, COUNT(DISTINCT inflation_rate) AS '
 	FROM interest_rates
     WHERE inflation_rate >=0
     GROUP BY inflation_rate
+
+SELECT COUNT(DISTINCT unemployment_rate)
+	FROM interest_rates;
+
+SELECT COUNT(DISTINCT inflation_rate)
+	FROM interest_rates;
