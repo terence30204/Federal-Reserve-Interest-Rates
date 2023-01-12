@@ -108,3 +108,6 @@ SELECT COUNT(DISTINCT unemployment_rate)
 
 SELECT COUNT(DISTINCT inflation_rate)
 	FROM interest_rates;
+
+UPDATE interest_rates SET Target_Rate = 0
+	WHERE Target_Rate IS Null;
