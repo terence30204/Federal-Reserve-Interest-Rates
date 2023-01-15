@@ -111,3 +111,57 @@ SELECT COUNT(DISTINCT inflation_rate)
 
 UPDATE interest_rates SET Target_Rate = 0
 	WHERE Target_Rate IS Null;
+	
+SELECT Year FROM `interest_rates
+
+CREATE TABLE new_interest_rates 
+AS SELECT * 
+FROM interest_rates 
+WHERE Year >= 1985
+
+SELECT Upper_Target, COUNT(*) 
+FROM new_interest_rates 
+GROUP BY Upper_Target
+
+SELECT Lower_Target, COUNT(*)
+FROM new_interest_rates
+GROUP BY Lower_Target 
+
+ALTER TABLE new_interest_rates
+	DROP COLUMN Upper_Target,
+	DROP COLUMN Lower_Target;
+
+SELECT *
+FROM new_interest_rates
+ORDER BY Inflation_Rate ASC
+
+SELECT *
+FROM new_interest_rates
+ORDER BY Unemployment_Rate ASC
+
+SELECT *
+FROM new_interest_rates
+ORDER BY Real_GDP ASC
+
+#Great Recession trends
+SELECT *
+FROM new_interest_rates
+WHERE Year BETWEEN 2006 AND 2013
+
+#Post Great Recession trends
+SELECT *
+FROM new_interest_rates
+WHERE Year BETWEEN 2007 AND 2017
+
+#Early 1990s recession
+SELECT *
+FROM new_interest_rates
+WHERE Year BETWEEN 1987 AND 1995
+
+#Early 200s recession
+SELECT *
+FROM new_interest_rates
+WHERE Year BETWEEN 1995 AND 2004
+
+
+
